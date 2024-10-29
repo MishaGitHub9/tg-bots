@@ -210,6 +210,18 @@
             padding: 2rem;
         }
 
+        .telegram-contact {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .telegram-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -292,13 +304,10 @@
 
     <section class="contact" id="contact">
         <h2 class="section-title">Зв'язатись зі мною</h2>
-        <!-- Замініть YOUR_EMAIL@gmail.com на вашу електронну адресу -->
-        <form class="contact-form" id="contactForm" action="https://formsubmit.co/miha2525z@gmail.com" method="POST">
-            <!-- Налаштування переадресації після відправки -->
-            <input type="hidden" name="_next" value="https://YOUR_DOMAIN.com/thanks.html">
-            <input type="hidden" name="_subject" value="Нова заявка на розробку Telegram бота!">
-            <input type="hidden" name="_template" value="table">
-            
+        <div class="telegram-contact">
+            Telegram: <a href="https://t.me/your_username" class="telegram-link">@not_hijacked</a>
+        </div>
+        <form class="contact-form" id="contactForm" action="mailto:your.email@example.com" method="POST" enctype="text/plain">
             <div class="form-group">
                 <input type="text" name="name" class="form-control" placeholder="Ваше ім'я" required>
             </div>
@@ -308,32 +317,51 @@
             <div class="form-group">
                 <textarea name="message" class="form-control" rows="5" placeholder="Опишіть ваш проект" required></textarea>
             </div>
-            <button type="submit" class="btn" id="submitBtn">Надіслати</button>
+            <button type="submit" class="btn">Надіслати</button>
         </form>
     </section>
 
     <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2024 TelegramBot Dev. Всі права захищені.</p>
-            <div class="social-links">
-                <!-- Замініть YOUR_TELEGRAM_USERNAME на ваш username в Telegram -->
-                <a href="https://t.me/YOUR_TELEGRAM_USERNAME" target="_blank" class="social-link">
-                    <svg class="telegram-icon" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.53-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.46-.42-1.4-.88.03-.25.38-.51 1.07-.78 4.19-1.82 6.98-3.03 8.37-3.61 3.98-1.67 4.81-1.96 5.35-1.97.12 0 .37.03.54.18.17.15.21.34.23.48.02.12.02.28 0 .47z"/>
-                    </svg>
-                    Зв'язатися в Telegram
-                </a>
-            </div>
-        </div>
+        <p>&copy; 2024 TelegramBot Dev. Всі права захищені.</p>
     </footer>
 
-    <!-- Плаваюча кнопка Telegram -->
-    <a href="https://t.me/not_hijacked" target="_blank" class="floating-button" title="Написати в Telegram">
-        <svg class="telegram-icon" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.53-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.46-.42-1.4-.88.03-.25.38-.51 1.07-.78 4.19-1.82 6.98-3.03 8.37-3.61 3.98-1.67 4.81-1.96 5.35-1.97.12 0 .37.03.54.18.17.15.21.34.23.48.02.12.02.28 0 .47z"/>
-        </svg>
-    </a>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-    <!-- Попередні скрипти залишаються без змін -->
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            const name = this.querySelector('[name="name"]').value;
+            const email = this.querySelector('[name="email"]').value;
+            const message = this.querySelector('[name="message"]').value;
+            
+            const mailtoLink = `mailto:miha2525z@gmail.com?subject=Нова заявка від ${name}&body=Ім'я: ${name}%0D%0AEmail: ${email}%0D%0AПовідомлення: ${message}`;
+            
+            window.location.href = mailtoLink;
+            alert('Дякуємо за заявку! Ми зв\'яжемося з вами найближчим часом.');
+            this.reset();
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.service-card, .portfolio-item').forEach((el) => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s, transform 0.5s';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
