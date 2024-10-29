@@ -305,9 +305,9 @@
     <section class="contact" id="contact">
         <h2 class="section-title">Зв'язатись зі мною</h2>
         <div class="telegram-contact">
-            Telegram: <a href="https://t.me/your_username" class="telegram-link">@not_hijacked</a>
+            Telegram: <a href="https://t.me/not_hijacked" class="telegram-link">@not_hijacked</a>
         </div>
-        <form class="contact-form" id="contactForm" action="mailto:your.email@example.com" method="POST" enctype="text/plain">
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/miha2525z@gmail.com" method="POST">
             <div class="form-group">
                 <input type="text" name="name" class="form-control" placeholder="Ваше ім'я" required>
             </div>
@@ -317,6 +317,8 @@
             <div class="form-group">
                 <textarea name="message" class="form-control" rows="5" placeholder="Опишіть ваш проект" required></textarea>
             </div>
+            <input type="hidden" name="_subject" value="Нова заявка з сайту">
+            <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html">
             <button type="submit" class="btn">Надіслати</button>
         </form>
     </section>
@@ -333,18 +335,6 @@
                     behavior: 'smooth'
                 });
             });
-        });
-
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            const name = this.querySelector('[name="name"]').value;
-            const email = this.querySelector('[name="email"]').value;
-            const message = this.querySelector('[name="message"]').value;
-            
-            const mailtoLink = `mailto:miha2525z@gmail.com?subject=Нова заявка від ${name}&body=Ім'я: ${name}%0D%0AEmail: ${email}%0D%0AПовідомлення: ${message}`;
-            
-            window.location.href = mailtoLink;
-            alert('Дякуємо за заявку! Ми зв\'яжемося з вами найближчим часом.');
-            this.reset();
         });
 
         const observer = new IntersectionObserver((entries) => {
