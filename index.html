@@ -303,26 +303,33 @@
     </section>
 
     <section class="contact" id="contact">
-        <h2 class="section-title">Зв'язатись зі мною</h2>
-        <div class="telegram-contact">
-            Telegram: <a href="https://t.me/not_hijacked" class="telegram-link">@not_hijacked</a>
+    <h2 class="section-title">Зв'язатись зі мною</h2>
+    <div class="telegram-contact">
+        Telegram: <a href="https://t.me/not_" class="telegram-link">@your_username</a>
+    </div>
+    <form class="contact-form" id="contactForm" action="https://formsubmit.co/miha2525z@gmail.com" method="POST">
+        <!-- Захист від спаму -->
+        <input type="hidden" name="_captcha" value="true">
+        <input type="text" name="_honey" style="display:none">
+        
+        <!-- Налаштування форми -->
+        <input type="hidden" name="_subject" value="Нова заявка з сайту">
+        <input type="hidden" name="_next" value="https://your-actual-domain.com/thanks.html">
+        
+        <!-- Поля форми -->
+        <div class="form-group">
+            <input type="text" name="name" class="form-control" placeholder="Ваше ім'я" required>
         </div>
-        <form class="contact-form" id="contactForm" action="https://formsubmit.co/miha2525z@gmail.com" method="POST">
-            <div class="form-group">
-                <input type="text" name="name" class="form-control" placeholder="Ваше ім'я" required>
-            </div>
-            <div class="form-group">
-                <input type="email" name="email" class="form-control" placeholder="Ваш email" required>
-            </div>
-            <div class="form-group">
-                <textarea name="message" class="form-control" rows="5" placeholder="Опишіть ваш проект" required></textarea>
-            </div>
-            <input type="hidden" name="_subject" value="Нова заявка з сайту">
-            <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html">
-            <button type="submit" class="btn">Надіслати</button>
-        </form>
-    </section>
-
+        <div class="form-group">
+            <input type="email" name="email" class="form-control" placeholder="Ваш email" required>
+        </div>
+        <div class="form-group">
+            <textarea name="message" class="form-control" rows="5" placeholder="Опишіть ваш проект" required></textarea>
+        </div>
+        
+        <button type="submit" class="btn">Надіслати</button>
+    </form>
+</section>
     <footer class="footer">
         <p>&copy; 2024 TelegramBot Dev. Всі права захищені.</p>
     </footer>
